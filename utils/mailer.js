@@ -15,7 +15,7 @@ const transporter = nodemailer.createTransport({
     from: 'amakash.warc@gmail.com',   // Sender address
     to: recipeient,    // List of recipients
     subject: subject,          // Subject line
-    html: `<h1>Hello!</h1><p>${msg}</p>`// HTML content
+    html: `<p>${msg}</p>`// HTML content
   };
   
   // Send email asynchronously

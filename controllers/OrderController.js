@@ -3,6 +3,7 @@ const Product = require("../models/Product");
 const Counter = require("../models/counter");
 const { StatusCodes } = require("http-status-codes");
 const sendMail = require("../utils/mailer");
+const {OrderStatus} = require('../utils/dictionaries');
 
 const create = async (req, res) => {
   let data = req.body;
@@ -35,7 +36,7 @@ const create = async (req, res) => {
     await Counter.create({ orderCount });
   }
 
-  sendMail(order.email, 'Order Confirmation' , `Your order is placed. The order ID is ${order.orderId}. Your order will be disbursed soon`)
+  sendMail(order.email, 'Order Confirmation' , `Your order is placed. The order ID is ${order.orderId}. Your order will be disbursed soon`);
 
   res.status(StatusCodes.CREATED).json({ order });
 };
@@ -48,6 +49,10 @@ const edit = async (req, res) => {
 
   await Order.findByIdAndUpdate(_id, data);
   let newThing = await Order.findById(_id);
+  //console.log(newThing.deliveryStatus, OrderStatus);
+  let newOrderStatus = OrderStatus[newThing.deliveryStatus];
+  sendMail(newThing.email, 'Order STATUS updated' , `Your order status for OrderID ${newThing.orderId} has changed to ${newOrderStatus}`);
+
   console.log(newThing);
   return res
     .status(StatusCodes.OK)
