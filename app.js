@@ -38,12 +38,12 @@ app.use(
 );
 app.use(cors());
 app.use(xss());
-app.use(
-  rateLimiter({
-    windowMs: 60 * 1000,
-    max: 60,
-  })
-);
+// app.use(
+//   rateLimiter({
+//     windowMs: 60 * 1000,
+//     max: 60,
+//   })
+// );
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json({ limit: "1000mb" }));
 app.use(bodyParser.urlencoded({ limit: "100mb", extended: true }));

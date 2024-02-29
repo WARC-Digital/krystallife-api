@@ -1,4 +1,4 @@
-const Product = require("../models/Product");
+const Product = require("../models/product");
 const { StatusCodes } = require("http-status-codes");
 
 const delFile = require("../utils/delFile")
