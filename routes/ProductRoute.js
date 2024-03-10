@@ -3,6 +3,7 @@ const router = express.Router();
 var multer = require("multer");
 const {  getaAll,create,edit, destroy, } = require("../controllers/ProductController");
 const authenticateUser = require("../middleware/authentication");
+const adminAuth = require("../middleware/adminAuth");
 var path = require('path');
 let n = 0;
 
@@ -23,6 +24,6 @@ const storage = multer.diskStorage({
     limits: { fileSize: 10000000 }, // Limit file size to 10MB
   }).single("img");
 
-router.route('/').get(getaAll).post(authenticateUser,upload,create).put(authenticateUser,upload,edit);
+router.route('/').get(getaAll).post(authenticateUser,adminAuth,upload,create).put(authenticateUser,adminAuth,upload,edit);
 router.delete('/:id',authenticateUser,destroy)
 module.exports = router;

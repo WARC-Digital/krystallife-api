@@ -7,11 +7,12 @@ const {
   destroy,
 } = require("../controllers/OrderController");
 const authenticateUser = require("../middleware/authentication");
+const adminAuth = require("../middleware/adminAuth");
 
 router
   .route("/")
   .get(authenticateUser, getaAll)
   .post(create)
-  .put(authenticateUser, edit);
-router.delete("/:id", authenticateUser, destroy);
+  .put(authenticateUser,adminAuth, edit);
+router.delete("/:id", authenticateUser, adminAuth,destroy);
 module.exports = router;

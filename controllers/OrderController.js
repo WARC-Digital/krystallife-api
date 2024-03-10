@@ -1,6 +1,7 @@
 const Order = require("../models/order");
 const Product = require("../models/product");
 const Counter = require("../models/counter");
+const User = require("../models/user");
 const { StatusCodes } = require("http-status-codes");
 const sendMail = require("../utils/mailer");
 const {OrderStatus} = require('../utils/dictionaries');
@@ -9,13 +10,16 @@ const create = async (req, res) => {
   let data = req.body;
   console.log(req.body);
   let orderSubtotal = 0;
-  data["orderItems"].forEach(async (element) => {
-    let prod = await Product.findById(element.product);
+  const products = await Product.find();
+  console.log(data["orderItems"]);
+
+  data["orderItems"].forEach((element) => {
+    let prod = products.find(item=>item._id == element.product );
     element.unitPrice = prod.price;
     element.subtotal = prod.price * element.quantity;
     orderSubtotal += element.subtotal;
-    // console.log(element.subtotal);
-    // console.log(orderSubtotal);
+    console.log(element.subtotal);
+    console.log(orderSubtotal);
   });
   const counter = await Counter.find();
   console.log("Current Counter: ", counter);
@@ -72,7 +76,19 @@ const destroy = async (req, res) => {
 };
 
 const getaAll = async (req, res) => {
-  const orders = await Order.find().sort("-createdAt");
+  let userId = req.user.userID;
+  const user =  await User.findById(userId);
+
+  let orders;
+
+  if(user.role == 'user'){
+     orders = await Order.find({email:user.email}).sort("-createdAt");
+  }else{
+     orders = await Order.find().sort("-createdAt");
+  }
+
+
+  
   // console.log(members)
   return res.json(orders);
 };

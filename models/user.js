@@ -9,6 +9,17 @@ const UserSchema = new mongoose.Schema(
       minlength: 3,
       maxlength: 50,
     },
+    fname: {
+      type: String,
+      minlength: 3,
+      maxlength: 50,
+    },
+    lname: {
+      type: String,
+      
+      minlength: 3,
+      maxlength: 50,
+    },
     email: {
       type: String,
       required: [true, "Email is Required"],
@@ -23,12 +34,30 @@ const UserSchema = new mongoose.Schema(
       enum: ["user", "admin", "superuser"],
       default: "user",
     },
+    phone: {
+      type: String,
+      required: [true, "Email is Required"],
+      unique:true
+    },
 
     password: {
       type: String,
       required: [true, "Password is Required"],
       minlength: 6,
     },
+
+    city:{
+      type: String,
+    },
+    district:{
+      type: String,
+    },
+    address:{
+      type: String,
+    },
+    zip:{
+      type: String,
+    }
   },
   { timestamps: true }
 );

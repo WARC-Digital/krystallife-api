@@ -1,0 +1,1043 @@
+.main{
+  display: none;
+}
+
+
+.slide-16-9-1,
+.slide-16-9-1 * {
+box-sizing: border-box;
+}
+.slide-16-9-1 {
+background: #ffffff;
+height: 920px;
+position: relative;
+overflow: hidden;
+}
+.group-424 {
+position: absolute;
+inset: 0;
+}
+.thank-you-for-your-order {
+color: #000000;
+text-align: center;
+font-family: "Manrope-Medium", sans-serif;
+font-size: 48px;
+font-weight: 500;
+position: absolute;
+left: calc(50% - 282px);
+top: 68px;
+}
+.hello-arman-thank-you-for-your-recent-order-we-are-pleased-to-confirm-thar-we-have-received-your-order-and-it-is-currently-being-processed {
+color: #000000;
+text-align: center;
+font-family: "Manrope-Regular", sans-serif;
+font-size: 14px;
+line-height: 150%;
+font-weight: 400;
+position: absolute;
+left: calc(50% - 481px);
+top: 155px;
+width: 963px;
+}
+.group-404 {
+width: 335px;
+height: 50px;
+position: static;
+}
+.rectangle-80 {
+background: #006a5d;
+border-radius: 86px;
+width: 335px;
+height: 50px;
+position: absolute;
+left: 793px;
+top: 218px;
+}
+.view-order {
+color: #ffffff;
+text-align: left;
+font-family: "Manrope-Regular", sans-serif;
+font-size: 16px;
+line-height: 150%;
+font-weight: 400;
+position: absolute;
+left: 921px;
+top: 231px;
+}
+.group-423 {
+width: 813px;
+height: 411px;
+position: static;
+}
+.group-421 {
+width: 374px;
+height: 411px;
+position: static;
+}
+.order-summary {
+color: #000000;
+text-align: center;
+font-family: "Manrope-SemiBold", sans-serif;
+font-size: 24px;
+font-weight: 600;
+position: absolute;
+left: calc(50% - 398px);
+top: 308px;
+}
+.group-414 {
+width: 231px;
+height: 49px;
+position: static;
+}
+.group-411 {
+width: 231px;
+height: 19px;
+position: static;
+}
+.date {
+color: #000000;
+text-align: left;
+font-family: "Manrope-Regular", sans-serif;
+font-size: 14px;
+font-weight: 400;
+position: absolute;
+left: 562px;
+top: 396px;
+}
+._24-01-2024 {
+color: #000000;
+text-align: left;
+font-family: "Manrope-Regular", sans-serif;
+font-size: 14px;
+font-weight: 400;
+position: absolute;
+left: 724px;
+top: 396px;
+}
+.group-412 {
+width: 231px;
+height: 19px;
+position: static;
+}
+.order-no {
+color: #000000;
+text-align: left;
+font-family: "Manrope-Regular", sans-serif;
+font-size: 14px;
+font-weight: 400;
+position: absolute;
+left: 562px;
+top: 366px;
+}
+._193031004 {
+color: #000000;
+text-align: left;
+font-family: "Manrope-Regular", sans-serif;
+font-size: 14px;
+font-weight: 400;
+position: absolute;
+left: 724px;
+top: 366px;
+}
+.group-401 {
+width: 374px;
+height: 180px;
+position: static;
+}
+.moringa-powder-6 {
+width: 89px;
+height: 138px;
+position: absolute;
+left: calc(50% - 400px);
+top: 451px;
+transform-origin: 0 0;
+transform: rotate(0deg) scale(1, 1);
+object-fit: cover;
+}
+.moringa-powder {
+color: #000000;
+text-align: left;
+font-family: "Manrope-Regular", sans-serif;
+font-size: 15px;
+line-height: 167%;
+font-weight: 400;
+position: absolute;
+left: 678px;
+top: 459px;
+}
+._1000-tk {
+color: #000000;
+text-align: left;
+font-family: "Manrope-Medium", sans-serif;
+font-size: 14px;
+line-height: 150%;
+font-weight: 500;
+position: absolute;
+left: 678px;
+top: 496px;
+}
+.qty-2 {
+color: #000000;
+text-align: left;
+font-family: "Manrope-Medium", sans-serif;
+font-size: 14px;
+line-height: 150%;
+font-weight: 500;
+position: absolute;
+left: 678px;
+top: 529px;
+}
+.standard-shipping-5-7-days {
+color: #636363;
+text-align: left;
+font-family: "Manrope-Medium", sans-serif;
+font-size: 10px;
+line-height: 150%;
+font-weight: 500;
+position: absolute;
+left: 678px;
+top: 569px;
+}
+.line-55 {
+border-style: solid;
+border-color: #adadad;
+border-width: 1px 0 0 0;
+width: 374px;
+height: 0px;
+position: absolute;
+left: 554px;
+top: 610px;
+}
+.line-56 {
+border-style: solid;
+border-color: #adadad;
+border-width: 1px 0 0 0;
+width: 374px;
+height: 0px;
+position: absolute;
+left: 554px;
+top: 430px;
+}
+.subtotal-discount-delivery-charge-vat {
+color: #000000;
+text-align: left;
+font-family: "Manrope-Regular", sans-serif;
+font-size: 10px;
+font-weight: 400;
+position: absolute;
+left: 562px;
+top: 625px;
+}
+.group-415 {
+width: 156px;
+height: 14px;
+position: static;
+}
+.total {
+color: #000000;
+text-align: right;
+font-family: "Manrope-Medium", sans-serif;
+font-size: 10px;
+font-weight: 500;
+position: absolute;
+left: 562px;
+top: 705px;
+}
+._2070-tk {
+color: #000000;
+text-align: right;
+font-family: "Manrope-Medium", sans-serif;
+font-size: 10px;
+font-weight: 500;
+position: absolute;
+left: 678px;
+top: 705px;
+}
+._2000-tk-0-tk-60-tk-10-tk {
+color: #000000;
+text-align: left;
+font-family: "Manrope-Regular", sans-serif;
+font-size: 10px;
+font-weight: 400;
+position: absolute;
+left: 679px;
+top: 625px;
+}
+.line-562 {
+border-style: solid;
+border-color: #000000;
+border-width: 1px 0 0 0;
+width: 374px;
+height: 0px;
+position: absolute;
+left: 554px;
+top: 693px;
+transform-origin: 0 0;
+transform: rotate(0deg) scale(1, 1);
+}
+.group-422 {
+width: 257px;
+height: 404px;
+position: static;
+}
+.customer-information {
+color: #000000;
+text-align: center;
+font-family: "Manrope-SemiBold", sans-serif;
+font-size: 24px;
+font-weight: 600;
+position: absolute;
+left: calc(50% - -150px);
+top: 309px;
+}
+.group-419 {
+width: 174px;
+height: 126px;
+position: static;
+}
+.arman-hossain-house-no-10-neer-jasmine-road-2-block-a-section-2-mirpur-2-dhaka-1316-mobile-01799525302 {
+color: #000000;
+text-align: right;
+font-family: "Manrope-Regular", sans-serif;
+font-size: 14px;
+line-height: 16px;
+font-weight: 400;
+position: absolute;
+left: 1193px;
+top: 410px;
+width: 174px;
+height: 82px;
+}
+.shipping-address {
+color: #000000;
+text-align: center;
+font-family: "Manrope-SemiBold", sans-serif;
+font-size: 15px;
+font-weight: 600;
+position: absolute;
+left: calc(50% - -273px);
+top: 366px;
+}
+.group-418 {
+width: 174px;
+height: 126px;
+position: static;
+}
+.arman-hossain-house-no-10-neer-jasmine-road-2-block-a-section-2-mirpur-2-dhaka-1316-mobile-017995253022 {
+color: #000000;
+text-align: right;
+font-family: "Manrope-Regular", sans-serif;
+font-size: 14px;
+line-height: 16px;
+font-weight: 400;
+position: absolute;
+left: 1193px;
+top: 574px;
+width: 174px;
+height: 82px;
+}
+.billing-address {
+color: #000000;
+text-align: center;
+font-family: "Manrope-SemiBold", sans-serif;
+font-size: 15px;
+font-weight: 600;
+position: absolute;
+left: calc(50% - -293px);
+top: 530px;
+}
+.group-420 {
+width: 178px;
+height: 19px;
+position: static;
+}
+.order-status {
+color: #000000;
+text-align: left;
+font-family: "Manrope-SemiBold", sans-serif;
+font-size: 14px;
+font-weight: 600;
+position: absolute;
+left: 1189px;
+top: 694px;
+}
+.pending {
+color: #000000;
+text-align: left;
+font-family: "Manrope-Regular", sans-serif;
+font-size: 14px;
+font-weight: 400;
+position: absolute;
+left: 1310px;
+top: 694px;
+width: 57px;
+height: 16px;
+}
+.line-57 {
+border-style: solid;
+border-color: #000000;
+border-width: 1px 0 0 0;
+width: 814px;
+height: 0px;
+position: absolute;
+left: 554px;
+top: 771px;
+transform-origin: 0 0;
+transform: rotate(0deg) scale(1, 1);
+}
+.group-417 {
+width: 81.66px;
+height: 15.93px;
+position: static;
+}
+.group-359 {
+width: 81.66px;
+height: 15.93px;
+position: static;
+}
+.frame {
+width: 14.87px;
+height: 14.87px;
+position: absolute;
+left: 554px;
+top: 797.53px;
+overflow: hidden;
+}
+.group {
+width: 51.93%;
+height: 100%;
+position: absolute;
+right: 24.04%;
+left: 24.03%;
+bottom: 0%;
+top: 0%;
+overflow: visible;
+}
+.frame2 {
+width: 15.93px;
+height: 15.93px;
+position: absolute;
+left: 619.73px;
+top: 797px;
+overflow: hidden;
+}
+.group2 {
+width: 80%;
+height: 80%;
+position: absolute;
+right: 10%;
+left: 10%;
+bottom: 10%;
+top: 10%;
+overflow: visible;
+}
+.frame3 {
+width: 14.87px;
+height: 14.87px;
+position: absolute;
+left: 586.87px;
+top: 797.53px;
+overflow: hidden;
+}
+.group3 {
+width: 100%;
+height: 100%;
+position: absolute;
+right: 0%;
+left: 0%;
+bottom: 0%;
+top: 0%;
+overflow: visible;
+}
+.this-is-an-automatic-generated-email-from-our-subscription-list-please-do-not-reply-to-this-email {
+color: #6d6e70;
+text-align: center;
+font-family: "Manrope-SemiBold", sans-serif;
+font-size: 12px;
+line-height: 167%;
+font-weight: 600;
+position: absolute;
+left: calc(50% - 297px);
+top: 846px;
+width: 595px;
+}
+.frame4 {
+width: 143px;
+height: 2.56%;
+position: absolute;
+left: calc(50% - 71px);
+bottom: 10.28%;
+top: 87.17%;
+overflow: hidden;
+}
+.group4 {
+height: auto;
+position: absolute;
+left: 0px;
+top: 0px;
+overflow: visible;
+}
+.frame5 {
+width: 143px;
+height: 2.56%;
+position: absolute;
+left: calc(50% - 71px);
+bottom: 94.92%;
+top: 2.53%;
+overflow: hidden;
+}
+.group5 {
+height: auto;
+position: absolute;
+left: 0px;
+top: 0px;
+overflow: visible;
+}
+.group-416 {
+width: 150px;
+height: 17px;
+position: static;
+}
+.privacy-policy {
+color: #000000;
+text-align: left;
+font-family: "Manrope-SemiBold", sans-serif;
+font-size: 10px;
+line-height: 167%;
+font-weight: 600;
+position: absolute;
+left: 1217px;
+top: 796px;
+}
+.contact-us {
+color: #000000;
+text-align: left;
+font-family: "Manrope-SemiBold", sans-serif;
+font-size: 10px;
+line-height: 167%;
+font-weight: 600;
+position: absolute;
+left: 1313px;
+top: 796px;
+}
+.ellipse-1 {
+background: #d9d9d9;
+border-radius: 50%;
+width: 4px;
+height: 4px;
+position: absolute;
+left: 1296px;
+top: 803px;
+}
+
+
+
+
+@media (max-width:450px){
+
+.dexktop{
+  display: none;
+}
+.main{
+display: block;
+}
+  .i-phone-13-14-1,
+  .i-phone-13-14-1 * {
+    box-sizing: border-box;
+  }
+  .i-phone-13-14-1 {
+    background: #ffffff;
+    height: 1776px;
+    position: relative;
+    overflow: hidden;
+  }
+  .group-401 {
+    position: absolute;
+    inset: 0;
+  }
+  .moringa-powder-6 {
+    width: 89px;
+    height: 138px;
+    position: absolute;
+    left: calc(50% - 181px);
+    top: 693px;
+    transform-origin: 0 0;
+    transform: rotate(0deg) scale(1, 1);
+    object-fit: cover;
+  }
+  .moringa-powder {
+    color: #000000;
+    text-align: left;
+    font-family: "Manrope-Regular", sans-serif;
+    font-size: 15px;
+    line-height: 167%;
+    font-weight: 400;
+    position: absolute;
+    left: 132px;
+    top: 701px;
+  }
+  ._1000-tk {
+    color: #000000;
+    text-align: left;
+    font-family: "Manrope-Medium", sans-serif;
+    font-size: 14px;
+    line-height: 150%;
+    font-weight: 500;
+    position: absolute;
+    left: 132px;
+    top: 738px;
+  }
+  .qty-2 {
+    color: #000000;
+    text-align: left;
+    font-family: "Manrope-Medium", sans-serif;
+    font-size: 14px;
+    line-height: 150%;
+    font-weight: 500;
+    position: absolute;
+    left: 132px;
+    top: 771px;
+  }
+  .standard-shipping-5-7-days {
+    color: #636363;
+    text-align: left;
+    font-family: "Manrope-Medium", sans-serif;
+    font-size: 10px;
+    line-height: 150%;
+    font-weight: 500;
+    position: absolute;
+    left: 132px;
+    top: 811px;
+  }
+  .line-55 {
+    border-style: solid;
+    border-color: #adadad;
+    border-width: 1px 0 0 0;
+    width: 374px;
+    height: 0px;
+    position: absolute;
+    left: 8px;
+    top: 852px;
+  }
+  .line-56 {
+    border-style: solid;
+    border-color: #adadad;
+    border-width: 1px 0 0 0;
+    width: 374px;
+    height: 0px;
+    position: absolute;
+    left: 8px;
+    top: 672px;
+  }
+  .thank-you-for-your-order {
+    color: #000000;
+    text-align: center;
+    font-family: "Manrope-Regular", sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    position: absolute;
+    left: 84px;
+    top: 83px;
+  }
+  .order-summary {
+    color: #000000;
+    text-align: center;
+    font-family: "Manrope-Regular", sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    position: absolute;
+    left: calc(50% - 168px);
+    top: 401px;
+  }
+  .customer-information {
+    color: #000000;
+    text-align: center;
+    font-family: "Manrope-Regular", sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    position: absolute;
+    left: calc(50% - 168px);
+    top: 984px;
+  }
+  .hello-arman-thank-you-for-your-recent-order-we-are-pleased-to-confirm-thar-we-have-received-your-order-and-it-is-currently-being-processed {
+    color: #000000;
+    text-align: center;
+    font-family: "Manrope-Regular", sans-serif;
+    font-size: 14px;
+    line-height: 150%;
+    font-weight: 400;
+    position: absolute;
+    left: 35px;
+    top: 203px;
+    width: 311px;
+  }
+  .group-404 {
+    position: absolute;
+    inset: 0;
+  }
+  .group-4042 {
+    width: 335px;
+    height: 50px;
+    position: static;
+  }
+  .rectangle-80 {
+    background: #006a5d;
+    border-radius: 86px;
+    width: 335px;
+    height: 50px;
+    position: absolute;
+    left: 23px;
+    top: 319px;
+  }
+  .view-order {
+    color: #ffffff;
+    text-align: left;
+    font-family: "Manrope-Regular", sans-serif;
+    font-size: 16px;
+    line-height: 150%;
+    font-weight: 400;
+    position: absolute;
+    left: 151px;
+    top: 332px;
+  }
+  .group-414 {
+    position: absolute;
+    inset: 0;
+  }
+  .group-413 {
+    width: 336px;
+    height: 94px;
+    position: static;
+  }
+  .arman-hossain-house-no-10-neer-jasmine-road-2-block-a-section-2-mirpur-2-dhaka-1316-mobile-01799525302 {
+    color: #000000;
+    text-align: left;
+    font-family: "Manrope-Regular", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    position: absolute;
+    left: 189px;
+    top: 528px;
+    width: 174px;
+    height: 94px;
+  }
+  .shipping-address {
+    color: #000000;
+    text-align: left;
+    font-family: "Manrope-Regular", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    position: absolute;
+    left: 27px;
+    top: 528px;
+  }
+  .group-411 {
+    width: 231px;
+    height: 19px;
+    position: static;
+  }
+  .date {
+    color: #000000;
+    text-align: left;
+    font-family: "Manrope-Regular", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    position: absolute;
+    left: 27px;
+    top: 497px;
+  }
+  ._24-01-2024 {
+    color: #000000;
+    text-align: left;
+    font-family: "Manrope-Regular", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    position: absolute;
+    left: 189px;
+    top: 497px;
+  }
+  .group-412 {
+    width: 231px;
+    height: 19px;
+    position: static;
+  }
+  .order-no {
+    color: #000000;
+    text-align: left;
+    font-family: "Manrope-Regular", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    position: absolute;
+    left: 27px;
+    top: 467px;
+  }
+  ._193031004 {
+    color: #000000;
+    text-align: left;
+    font-family: "Manrope-Regular", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    position: absolute;
+    left: 189px;
+    top: 467px;
+  }
+  .arman-hossain-house-no-10-neer-jasmine-road-2-block-a-section-2-mirpur-2-dhaka-1316-mobile-017995253022 {
+    color: #000000;
+    text-align: left;
+    font-family: "Manrope-Regular", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    position: absolute;
+    left: 27px;
+    top: 1093px;
+    width: 174px;
+    height: 94px;
+  }
+  .arman-hossain-house-no-10-neer-jasmine-road-2-block-a-section-2-mirpur-2-dhaka-1316-mobile-017995253023 {
+    color: #000000;
+    text-align: left;
+    font-family: "Manrope-Regular", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    position: absolute;
+    left: 27px;
+    top: 1281px;
+    width: 174px;
+    height: 94px;
+  }
+  .subtotal-discount-delivery-charge-vat {
+    color: #000000;
+    text-align: left;
+    font-family: "Manrope-Regular", sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    position: absolute;
+    left: 27px;
+    top: 858px;
+  }
+  .group-415 {
+    position: absolute;
+    inset: 0;
+  }
+  .total {
+    color: #000000;
+    text-align: right;
+    font-family: "Manrope-Medium", sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    position: absolute;
+    left: 27px;
+    top: 938px;
+  }
+  ._2070-tk {
+    color: #000000;
+    text-align: right;
+    font-family: "Manrope-Medium", sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    position: absolute;
+    left: 132px;
+    top: 938px;
+  }
+  ._2000-tk-0-tk-60-tk-10-tk {
+    color: #000000;
+    text-align: left;
+    font-family: "Manrope-Regular", sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    position: absolute;
+    left: 133px;
+    top: 858px;
+  }
+  .line-562 {
+    border-style: solid;
+    border-color: #000000;
+    border-width: 1px 0 0 0;
+    width: 374px;
+    height: 0px;
+    position: absolute;
+    left: 8px;
+    top: 926px;
+    transform-origin: 0 0;
+    transform: rotate(0deg) scale(1, 1);
+  }
+  .shipping-address2 {
+    color: #000000;
+    text-align: center;
+    font-family: "Manrope-SemiBold", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    position: absolute;
+    left: calc(50% - 168px);
+    top: 1049px;
+  }
+  .billing-address {
+    color: #000000;
+    text-align: center;
+    font-family: "Manrope-SemiBold", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    position: absolute;
+    left: calc(50% - 168px);
+    top: 1237px;
+  }
+  .order-status {
+    color: #000000;
+    text-align: left;
+    font-family: "Manrope-SemiBold", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    position: absolute;
+    left: 27px;
+    top: 1439px;
+  }
+  .frame {
+    width: 105px;
+    height: 0.96%;
+    position: absolute;
+    left: calc(50% - 57px);
+    bottom: 97.18%;
+    top: 1.86%;
+    overflow: hidden;
+  }
+  .group {
+    height: auto;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    overflow: visible;
+  }
+  .group-417 {
+    position: absolute;
+    inset: 0;
+  }
+  .group-359 {
+    width: 82.45px;
+    height: 15.93px;
+    position: static;
+  }
+  .frame2 {
+    width: 14.87px;
+    height: 14.87px;
+    position: absolute;
+    left: 158px;
+    top: 1681.53px;
+    overflow: hidden;
+  }
+  .group2 {
+    width: 51.93%;
+    height: 100%;
+    position: absolute;
+    right: 24.04%;
+    left: 24.03%;
+    bottom: 0%;
+    top: 0%;
+    overflow: visible;
+  }
+  .frame3 {
+    width: 15.93px;
+    height: 15.93px;
+    position: absolute;
+    left: 224.52px;
+    top: 1681px;
+    overflow: hidden;
+  }
+  .group3 {
+    width: 80%;
+    height: 80%;
+    position: absolute;
+    right: 10%;
+    left: 10%;
+    bottom: 10%;
+    top: 10%;
+    overflow: visible;
+  }
+  .frame4 {
+    width: 14.87px;
+    height: 14.87px;
+    position: absolute;
+    left: 191.84px;
+    top: 1681.53px;
+    overflow: hidden;
+  }
+  .group4 {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    right: 0%;
+    left: 0%;
+    bottom: 0%;
+    top: 0%;
+    overflow: visible;
+  }
+  .group-416 {
+    width: 150px;
+    height: 17px;
+    position: static;
+  }
+  .privacy-policy {
+    color: #000000;
+    text-align: left;
+    font-family: "Manrope-SemiBold", sans-serif;
+    font-size: 10px;
+    line-height: 167%;
+    font-weight: 600;
+    position: absolute;
+    left: 125px;
+    top: 1725px;
+  }
+  .contact-us {
+    color: #000000;
+    text-align: left;
+    font-family: "Manrope-SemiBold", sans-serif;
+    font-size: 10px;
+    line-height: 167%;
+    font-weight: 600;
+    position: absolute;
+    left: 221px;
+    top: 1725px;
+  }
+  .ellipse-1 {
+    background: #d9d9d9;
+    border-radius: 50%;
+    width: 4px;
+    height: 4px;
+    position: absolute;
+    left: 204px;
+    top: 1732px;
+  }
+  .frame5 {
+    width: 143px;
+    height: 1.3%;
+    position: absolute;
+    left: calc(50% - 67px);
+    bottom: 6.93%;
+    top: 91.78%;
+    overflow: hidden;
+  }
+  .group5 {
+    height: auto;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    overflow: visible;
+  }
+  .this-is-an-automatic-generated-email-from-our-subscription-list-please-do-not-reply-to-this-email {
+    color: #6d6e70;
+    text-align: center;
+    font-family: "Manrope-SemiBold", sans-serif;
+    font-size: 12px;
+    line-height: 167%;
+    font-weight: 600;
+    position: absolute;
+    left: calc(50% - 160px);
+    top: 1550px;
+    width: 320px;
+  }
+  
+
+
+}
+
+
+

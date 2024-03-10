@@ -1,4 +1,6 @@
 const nodemailer = require('nodemailer');
+var hbs = require('nodemailer-express-handlebars');
+const path = require('path')
 
 const sendEmail = (recipeient,subject,msg)=>{
     // Create a transporter object using the default SMTP transport
@@ -12,13 +14,32 @@ const transporter = nodemailer.createTransport({
 
   
   
-  // Define email options with HTML content
-  const mailOptions = {
+ 
+
+  const handlebarOptions = {
+    viewEngine: {
+      extName: ".handlebars",
+      partialsDir: path.resolve('./views'),
+      defaultLayout: false,
+    },
+    viewPath: path.resolve('./views'),
+    extName: ".handlebars",
+  }
+  
+  transporter.use('compile', hbs(handlebarOptions));
+
+   // Define email options with HTML content
+   const mailOptions = {
     from: 'info.krystallife@gmail.com',   // Sender address
     to: recipeient,    // List of recipients
     subject: subject,          // Subject line
-    html: `<p>${msg}</p>`// HTML content
+    template: 'emailTemplate',
+    context: {
+      title: 'Title Here',
+      text: "Lorem ipsum dolor sit amet, consectetur..."
+    }
   };
+  
   
   // Send email asynchronously
   transporter.sendMail(mailOptions, (error, info) => {

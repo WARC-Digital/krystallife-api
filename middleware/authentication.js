@@ -14,9 +14,6 @@ const auth = async (req, res, next) => {
     const payload = jwt.verify(token, process.env.JWT_SECRET);
 
     req.user = { userID: payload.userID, role: payload.role };
-    if(req.user.role == 'user'){
-      throw new UnauthenticatedError("You are not authorised to login.");
-    }
     next();
   } catch (error) {
     console.log(error);

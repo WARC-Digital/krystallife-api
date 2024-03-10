@@ -10,6 +10,9 @@ const cors = require("cors");
 const xss = require("xss-clean");
 const rateLimiter = require("express-rate-limit");
 
+
+const nodemailerTemplate = require("./utils/templateMailer");
+
 //Connect DB
 const connectDB = require("./db/connect");
 
@@ -20,6 +23,7 @@ const authenticateUser = require("./middleware/authentication");
 const authRouter = require("./routes/AuthRoute");
 const productRouter = require("./routes/ProductRoute");
 const orderRouter = require("./routes/OrderRoute");
+const userRouter = require("./routes/UserRoute");
 var path = require("path");
 
 // error handler
@@ -54,10 +58,16 @@ app.get("/", (req, res) => {
   res.send("KRYSTALLIFE Server API");
 });
 
+app.get('/emailTest',(req, res)=>{
+  nodemailerTemplate('amakash.warc@gmail.com', 'Test Template Email','Does not matter');
+  res.send("Email Send");
+})
+
 //Routes
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/product", productRouter);
 app.use("/api/v1/order", orderRouter);
+app.use("/api/v1/user", userRouter);
 
 app.use(notFoundMiddleware);
 //app.use(errorHandlerMiddleware);
@@ -72,5 +82,7 @@ const start = async () => {
     console.log(error);
   }
 };
+
+
 
 start();
