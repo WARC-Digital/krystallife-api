@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+</head>
+<body style="margin: 0;padding: 0;box-sizing: border-box;  width:600px; ">
+      <header style="text-align: center;padding: 10px; width:600px;">
+      <img style="height:24px" src="https://krystallife.store/assets/images/krystallife-header-logo.png" alt="" alt="">
+     </header >
+     <div class="all" style="justify-content: center;text-align:center; width:600px;">
+
+      <div class="title" style="text-align: center;">
+            <h1>
+                  {{title}}
+            </h1>
+            <span>
+                  Hello {{order.name}}
+            </span>
+            <span>
+                  {{msg}}
+            </span>
+            
+           </div>
+           <a href="https://krystallife.store/profile"><button style="margin:20px; background:#006A5D; border:none; border-radius:86px;width:335px;height:50px;color:white; " >
+                  View Order
+            </button></a>
+
+
+            <div class="order" style="display: flex; justify-content:space-between" >
+                  <div class="orderSummary" style="text-align: left;">
+                        <h2 style="font-size: 20px;">Order Summary</h2>
+                        <span>Order No:</span> <span>{{order.orderId}}</span><br>
+                        <span>Date:</span> <span>{{order.date}}</span>
+                        <hr>
+                        {{#each order.orderItems}}
+                        <div class="content" style="display: flex;">
+
+                              <div class="image" >
+                                <img style="width:89px; height:138px" src="{{this.img}}" alt="">    
+                              </div>
+                              <div class="span">
+                               <span >{{this.name}}</span> <br>
+                              <span>{{this.subtotal}} TK</span> <br>
+                              <span>QTY: {{this.quantity}}</span> <br>
+                              {{#if this.preorder}}
+                              <h4>Pre-Order</h4>  
+                              {{else}}
+                              <h4>Standard Shipping 5-7 Days</h4>  
+                              {{/if}} 
+                              </div>
+                              
+                        </div>
+                        <hr>
+                        {{/each}}
+                        <div class="payment" style="font-size:14px">
+                              <div >SubTotal: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{order.subTotal}}tk </div> 
+                              <br>
+                              <div>Discount: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{order.discount}}tk</div>
+                              <br>
+                              <div>Delivary Charge: &nbsp;&nbsp; {{ order.shippingFee}}tk</div>
+                              <br>
+                              <div>Vat: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0tk</div>
+                              <br>
+                              <hr>
+                              <div>Total &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{order.totalAmount}}tk</div>
+                        </div>
+                  </div>
+                  <div class="contactInformation" style="text-align: right;">
+                        <h2 style="font-size: 20px;">Customer Information</h2>
+
+                        <div class="Address">
+                              <h2 style="font-size: 15px;">Shipping Address</h2>
+                              <br>
+                              <br>
+                              <span style="justify-content:rignt; font-size: 14px;">
+                                    {{order.name}},<br>{{order.shippingAddress}}, <br> {{order.city}}, {{order.district}} {{order.area}} <br>Mobile: {{order.phoneNo}}
+                              </span>
+
+                              <br>
+                              <br>
+                              <br>
+                              <h2 style="font-size: 15px;">Billing Address</h2>
+                              <br>
+                              {{order.name}},<br>{{order.shippingAddress}},<br> {{order.city}}, {{order.district}} {{order.area}} <br>Mobile: {{order.phoneNo}}
+                        </div>
+
+                        <h2 style="font-size: 14px;">
+                              Order Status:{{order.deliveryStatus}}
+                        </h2>
+
+                        
+                  </div>
+                  
+            </div>
+            <hr>
+
+            <div class="footer" style="display: flex; justify-content:space-between; width: 600px;">
+                  <div class="logos" style="display:flex; gap:1rem; height:15px; width:15px;" >
+                        <img style="height:15px" src="https://krystallife.store/assets/icons/facebook-icon.png" alt="">
+                        <img style="height:15px" src="https://krystallife.store/assets/icons/insta-icon.png" alt="" alt="">
+                        <img  style="height:15px" src="https://krystallife.store/assets/icons/linked-in-icon.png" alt="">
+                  </div>
+                  <div class="image" >
+                        <img style="height:24px" src="https://krystallife.store/assets/images/krystallife-header-logo.png" alt="" src="https://krystallife.store/assets/images/krystallife-header-logo.png" alt="" style="padding-left:40px;" alt="">
+                  </div>
+                  <div class="text" style="font-size: 12px;">
+                        <span>Privacy Policy</span>
+                        .
+                        <span>Contact Us</span>
+                  </div>
+            </div>
+
+      </div>
+     
+     
+     
+</body>
+</html>

@@ -58,10 +58,10 @@ app.get("/", (req, res) => {
   res.send("KRYSTALLIFE Server API");
 });
 
-app.get('/emailTest',(req, res)=>{
-  nodemailerTemplate('amakash.warc@gmail.com', 'Test Template Email','Does not matter');
-  res.send("Email Send");
-})
+// app.get('/emailTest',(req, res)=>{
+//   nodemailerTemplate('amakash.warc@gmail.com', 'Test Template Email','Does not matter');
+//   res.send("Email Send");
+// })
 
 //Routes
 app.use("/api/v1/auth", authRouter);

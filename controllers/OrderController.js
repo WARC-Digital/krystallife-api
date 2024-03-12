@@ -4,6 +4,7 @@ const Counter = require("../models/counter");
 const User = require("../models/user");
 const { StatusCodes } = require("http-status-codes");
 const sendMail = require("../utils/mailer");
+const templateSendMail = require("../utils/templateMailer");
 const {OrderStatus} = require('../utils/dictionaries');
 
 const create = async (req, res) => {
@@ -31,7 +32,9 @@ const create = async (req, res) => {
   data["checkoutDate"] = new Date();
   data["deliveryStatus"] = 1;
   data["subTotal"] = orderSubtotal;
-  data["totalAmount"] = orderSubtotal + 200;
+  data["shippingFee"] = 200;
+  data["discount"] = 0;
+  data["totalAmount"] = orderSubtotal + data["shippingFee"] - data["discount"];
   console.log(data);
   const order = await Order.create(data);
   if (counter.length > 0) {
@@ -40,7 +43,8 @@ const create = async (req, res) => {
     await Counter.create({ orderCount });
   }
 
-  sendMail(order.email, 'Order Confirmation' , `Your order is placed. The order ID is ${order.orderId}. Your order will be disbursed soon`);
+  //sendMail(order.email, 'Order Confirmation' , `Your order is placed. The order ID is ${order.orderId}. Your order will be disbursed soon`);
+  templateSendMail('orderTemplate',`Order Confirmation - ${order.orderId}`,{title:'Thank You for your Order!',msg:'Thank you for your recent order We are pleased to confirm thar we have received your order and it is currently being processed.',order:order.toJSON(),products})
 
   res.status(StatusCodes.CREATED).json({ order });
 };
@@ -50,12 +54,15 @@ const edit = async (req, res) => {
   console.log(data);
   let _id = data._id;
   delete data._id;
-
+  const products = await Product.find();
   await Order.findByIdAndUpdate(_id, data);
   let newThing = await Order.findById(_id);
   //console.log(newThing.deliveryStatus, OrderStatus);
   let newOrderStatus = OrderStatus[newThing.deliveryStatus];
-  sendMail(newThing.email, 'Order STATUS updated' , `Your order status for OrderID ${newThing.orderId} has changed to ${newOrderStatus}`);
+  let suffix='';
+  if(newOrderStatus.includes)
+  //sendMail(newThing.email, 'Order STATUS updated' , `Your order status for OrderID ${newThing.orderId} has changed to ${newOrderStatus}`);
+  templateSendMail('orderTemplate',`Order Status Updated to ${newOrderStatus} - ${newThing.orderId}`,{title:'Your Order Status Updated!',msg:`Your Order Status has been updated to ${newOrderStatus}. ${suffix}`,order:newThing.toJSON(),products})
 
   console.log(newThing);
   return res

@@ -43,7 +43,7 @@ const edit = async (req, res) => {
 
 const destroy = async (req,res)=>{
     let id = req.params.id;
-    let prev_prod = await Product.findById(_id);
+    let prev_prod = await Product.findById(id);
     let prev_img = prev_prod.imgUrl.split('/').pop();
     delFile(prev_img,res,'product');
     deleted = await Product.findByIdAndDelete(id);

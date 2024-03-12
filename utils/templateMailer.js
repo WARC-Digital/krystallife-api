@@ -1,8 +1,9 @@
 const nodemailer = require('nodemailer');
 var hbs = require('nodemailer-express-handlebars');
-const path = require('path')
+const path = require('path');
+const {OrderStatus} = require('./oderStatus')
 
-const sendEmail = (recipeient,subject,msg)=>{
+const sendEmail = (template,subject,context)=>{
     // Create a transporter object using the default SMTP transport
 const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -18,12 +19,27 @@ const transporter = nodemailer.createTransport({
 
   const handlebarOptions = {
     viewEngine: {
-      extName: ".handlebars",
+      extName: ".html",
       partialsDir: path.resolve('./views'),
       defaultLayout: false,
     },
     viewPath: path.resolve('./views'),
-    extName: ".handlebars",
+    extName: ".html",
+  }
+
+  if(template == 'orderTemplate'){
+    for(let i = 0;i<context.order.orderItems.length;i++){
+      if(context.order.orderItems[i].orderType == 'PRE-ORDER'){
+        context.order.orderItems[i]['preorder'] = true;
+      }else{
+        context.order.orderItems[i]['preorder'] = false;
+      }
+      context.order.orderItems[i]['name'] = context.products.find(item=>item._id ==  context.order.orderItems[i].product).name;
+      context.order.orderItems[i]['img'] =  'https://api.krystallife.store' + context.products.find(item=>item._id ==  context.order.orderItems[i].product).imgUrl;
+    }
+    context.order.deliveryStatus = OrderStatus[context.order.deliveryStatus-1];
+    context.order['date'] = context.order.checkoutDate.toLocaleDateString();
+
   }
   
   transporter.use('compile', hbs(handlebarOptions));
@@ -31,13 +47,10 @@ const transporter = nodemailer.createTransport({
    // Define email options with HTML content
    const mailOptions = {
     from: 'info.krystallife@gmail.com',   // Sender address
-    to: recipeient,    // List of recipients
+    to: context.order.email,    // List of recipients
     subject: subject,          // Subject line
-    template: 'emailTemplate',
-    context: {
-      title: 'Title Here',
-      text: "Lorem ipsum dolor sit amet, consectetur..."
-    }
+    template: template,
+    context: context,
   };
   
   
