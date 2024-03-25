@@ -94,9 +94,14 @@ const userLogin = async (req, res) => {
   res.status(StatusCodes.OK).json({ user: user, token });
 };
 
+const checkAdmin = async(req, res)=>{
+  return res.status(StatusCodes.OK).json({msg:"Admin Verified Successfully"});
+}
+
 module.exports = {
   register,
   login,
   reqOTP,
   userLogin,
+  checkAdmin,
 };
