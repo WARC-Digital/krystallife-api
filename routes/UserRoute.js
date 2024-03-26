@@ -5,6 +5,6 @@ const authenticateUser = require("../middleware/authentication");
 const adminAuth = require("../middleware/adminAuth");
 
 router.patch("/", authenticateUser, updateUser);
-router.get("/getByEmail", authenticateUser, adminAuth, getUserByEmail);
+router.get("/getByEmail/:email", authenticateUser, adminAuth, getUserByEmail);
 
 module.exports = router;

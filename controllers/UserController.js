@@ -20,9 +20,7 @@ const updateUser = async (req, res) => {
 };
 
 const getUserByEmail = async (req, res) => {
-  let data = req.body;
-  console.log(data);
-  let email = data["email"];
+  let email = req.params.email;
 
   const user = await User.find({ email });
 

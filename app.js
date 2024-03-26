@@ -9,6 +9,7 @@ const heltmet = require("helmet");
 const cors = require("cors");
 const xss = require("xss-clean");
 const rateLimiter = require("express-rate-limit");
+const logger = require("morgan");
 
 
 const nodemailerTemplate = require("./utils/templateMailer");
@@ -42,6 +43,7 @@ app.use(
 );
 app.use(cors());
 app.use(xss());
+app.use(logger("dev"));
 // app.use(
 //   rateLimiter({
 //     windowMs: 60 * 1000,
@@ -70,7 +72,7 @@ app.use("/api/v1/order", orderRouter);
 app.use("/api/v1/user", userRouter);
 
 app.use(notFoundMiddleware);
-//app.use(errorHandlerMiddleware);
+app.use(errorHandlerMiddleware);
 
 const port = process.env.PORT || 8080;
 

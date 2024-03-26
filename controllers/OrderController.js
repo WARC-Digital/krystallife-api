@@ -46,6 +46,21 @@ const create = async (req, res) => {
   //sendMail(order.email, 'Order Confirmation' , `Your order is placed. The order ID is ${order.orderId}. Your order will be disbursed soon`);
   templateSendMail('orderTemplate',`Order Confirmation - ${order.orderId}`,{title:'Thank You for your Order!',msg:'Thank you for your recent order We are pleased to confirm thar we have received your order and it is currently being processed.',order:order.toJSON(),products})
 
+  const user = await User.findOne({email:data['email']})
+
+  try{
+    if(!user){
+      let arr = data['name'].split(" ")
+      await User.create({name:data['name'], role:'user',lname: arr[arr.length-1],fname:data['name'].replace(arr[arr.length-1],'').trim(),phone:data['phoneNo'],password:'123abc',zip:data['area'],city:data['city'],district:data['district'],address:data['shippingAddress'],email:data['email']  });
+      console.log('New User Created with email:',data['email']);
+    }
+
+  }
+  catch(err){
+    console.log('Error Occured. User Could Not be Created. Only Saving Order.',err);
+  }
+  
+
   res.status(StatusCodes.CREATED).json({ order });
 };
 
