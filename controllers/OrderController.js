@@ -2,8 +2,9 @@ const Order = require("../models/order");
 const Product = require("../models/product");
 const Counter = require("../models/counter");
 const User = require("../models/user");
+const {calculateDiscountByCoupon} = require("./CouponController");
 const { StatusCodes } = require("http-status-codes");
-const sendMail = require("../utils/mailer");
+//const sendMail = require("../utils/mailer");
 const templateSendMail = require("../utils/templateMailer");
 const {OrderStatus} = require('../utils/dictionaries');
 
@@ -28,12 +29,21 @@ const create = async (req, res) => {
   if (counter.length > 0) {
     orderCount = counter[0].orderCount + 1;
   }
+  data['discount'] = 0;
+  if(data['coupon']){
+    let result = await calculateDiscountByCoupon(req,data['coupon'],orderSubtotal);
+
+    if(!result.error){
+      data['discount'] = result.discout;
+    }
+  }
+
   data["orderId"] = "#" + genDateString() + orderCount;
   data["checkoutDate"] = new Date();
   data["deliveryStatus"] = 1;
   data["subTotal"] = orderSubtotal;
   data["shippingFee"] = 200;
-  data["discount"] = 0;
+  
   data["totalAmount"] = orderSubtotal + data["shippingFee"] - data["discount"];
   console.log(data);
   const order = await Order.create(data);

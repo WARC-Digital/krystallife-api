@@ -4,18 +4,19 @@ const couponSchema = new mongoose.Schema(
     name: {
       type: String,
       required: true,
+      unique:true,
     },
     amount: {
-        type: number,
+        type: Number,
     },
     percentage: {
-        type: number,
+        type: Number,
     },
     maxDiscount:{
         type: Number,
         required: true,
     },
-    userLimit:{
+    useLimit:{
         type: Number,
         required: true,
     },
@@ -26,9 +27,13 @@ const couponSchema = new mongoose.Schema(
     validity:{
         type: Date,
         required: true,
+    },
+    active:{
+        type:Boolean,
+        required: true,
     }
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("coupon", couponSchema);
+module.exports = mongoose.model("Coupon", couponSchema);

@@ -105,6 +105,9 @@ const orderschema = new Schema(
       type: String,
       required: true,
     },
+    coupon: {
+      type: String,
+    },
   },
   {
     timestamps: true,
