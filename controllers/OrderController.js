@@ -1,12 +1,13 @@
 const Order = require("../models/order");
+const CouponUsage = require("../models/couponUsage");
 const Product = require("../models/product");
 const Counter = require("../models/counter");
 const User = require("../models/user");
-const {calculateDiscountByCoupon} = require("./CouponController");
+const { calculateDiscountByCoupon } = require("./CouponController");
 const { StatusCodes } = require("http-status-codes");
 //const sendMail = require("../utils/mailer");
 const templateSendMail = require("../utils/templateMailer");
-const {OrderStatus} = require('../utils/dictionaries');
+const { OrderStatus } = require("../utils/dictionaries");
 
 const create = async (req, res) => {
   let data = req.body;
@@ -16,7 +17,7 @@ const create = async (req, res) => {
   console.log(data["orderItems"]);
 
   data["orderItems"].forEach((element) => {
-    let prod = products.find(item=>item._id == element.product );
+    let prod = products.find((item) => item._id == element.product);
     element.unitPrice = prod.price;
     element.subtotal = prod.price * element.quantity;
     orderSubtotal += element.subtotal;
@@ -29,12 +30,31 @@ const create = async (req, res) => {
   if (counter.length > 0) {
     orderCount = counter[0].orderCount + 1;
   }
-  data['discount'] = 0;
-  if(data['coupon']){
-    let result = await calculateDiscountByCoupon(req,data['coupon'],orderSubtotal);
+  data["discount"] = 0;
+  if (data["coupon"]) {
+    let result = await calculateDiscountByCoupon(
+      data["email"],
+      data["coupon"],
+      orderSubtotal
+    );
 
-    if(!result.error){
-      data['discount'] = result.discout;
+    if (!result.error) {
+      data["discount"] = result.discount;
+    }
+    const usage = await CouponUsage.findOne({
+      email: data["email"],
+      couponCode: data["coupon"],
+    });
+    if (usage) {
+      await CouponUsage.findByIdAndUpdate(usage._id, {
+        usage: usage.usage + 1,
+      });
+    } else {
+      await CouponUsage.create({
+        usage: 1,
+        email: data["email"],
+        couponCode: data["coupon"],
+      });
     }
   }
 
@@ -43,7 +63,7 @@ const create = async (req, res) => {
   data["deliveryStatus"] = 1;
   data["subTotal"] = orderSubtotal;
   data["shippingFee"] = 200;
-  
+
   data["totalAmount"] = orderSubtotal + data["shippingFee"] - data["discount"];
   console.log(data);
   const order = await Order.create(data);
@@ -54,22 +74,39 @@ const create = async (req, res) => {
   }
 
   //sendMail(order.email, 'Order Confirmation' , `Your order is placed. The order ID is ${order.orderId}. Your order will be disbursed soon`);
-  templateSendMail('orderTemplate',`Order Confirmation - ${order.orderId}`,{title:'Thank You for your Order!',msg:'Thank you for your recent order We are pleased to confirm thar we have received your order and it is currently being processed.',order:order.toJSON(),products})
+  templateSendMail("orderTemplate", `Order Confirmation - ${order.orderId}`, {
+    title: "Thank You for your Order!",
+    msg: "Thank you for your recent order We are pleased to confirm thar we have received your order and it is currently being processed.",
+    order: order.toJSON(),
+    products,
+  });
 
-  const user = await User.findOne({email:data['email']})
+  const user = await User.findOne({ email: data["email"] });
 
-  try{
-    if(!user){
-      let arr = data['name'].split(" ")
-      await User.create({name:data['name'], role:'user',lname: arr[arr.length-1],fname:data['name'].replace(arr[arr.length-1],'').trim(),phone:data['phoneNo'],password:'123abc',zip:data['area'],city:data['city'],district:data['district'],address:data['shippingAddress'],email:data['email']  });
-      console.log('New User Created with email:',data['email']);
+  try {
+    if (!user) {
+      let arr = data["name"].split(" ");
+      await User.create({
+        name: data["name"],
+        role: "user",
+        lname: arr[arr.length - 1],
+        fname: data["name"].replace(arr[arr.length - 1], "").trim(),
+        phone: data["phoneNo"],
+        password: "123abc",
+        zip: data["area"],
+        city: data["city"],
+        district: data["district"],
+        address: data["shippingAddress"],
+        email: data["email"],
+      });
+      console.log("New User Created with email:", data["email"]);
     }
-
+  } catch (err) {
+    console.log(
+      "Error Occured. User Could Not be Created. Only Saving Order.",
+      err
+    );
   }
-  catch(err){
-    console.log('Error Occured. User Could Not be Created. Only Saving Order.',err);
-  }
-  
 
   res.status(StatusCodes.CREATED).json({ order });
 };
@@ -84,10 +121,19 @@ const edit = async (req, res) => {
   let newThing = await Order.findById(_id);
   //console.log(newThing.deliveryStatus, OrderStatus);
   let newOrderStatus = OrderStatus[newThing.deliveryStatus];
-  let suffix='';
-  if(newOrderStatus.includes)
-  //sendMail(newThing.email, 'Order STATUS updated' , `Your order status for OrderID ${newThing.orderId} has changed to ${newOrderStatus}`);
-  templateSendMail('orderTemplate',`Order Status Updated to ${newOrderStatus} - ${newThing.orderId}`,{title:'Your Order Status Updated!',msg:`Your Order Status has been updated to ${newOrderStatus}. ${suffix}`,order:newThing.toJSON(),products})
+  let suffix = "";
+  if (newOrderStatus.includes)
+    //sendMail(newThing.email, 'Order STATUS updated' , `Your order status for OrderID ${newThing.orderId} has changed to ${newOrderStatus}`);
+    templateSendMail(
+      "orderTemplate",
+      `Order Status Updated to ${newOrderStatus} - ${newThing.orderId}`,
+      {
+        title: "Your Order Status Updated!",
+        msg: `Your Order Status has been updated to ${newOrderStatus}. ${suffix}`,
+        order: newThing.toJSON(),
+        products,
+      }
+    );
 
   console.log(newThing);
   return res
@@ -109,18 +155,16 @@ const destroy = async (req, res) => {
 
 const getaAll = async (req, res) => {
   let userId = req.user.userID;
-  const user =  await User.findById(userId);
+  const user = await User.findById(userId);
 
   let orders;
 
-  if(user.role == 'user'){
-     orders = await Order.find({email:user.email}).sort("-createdAt");
-  }else{
-     orders = await Order.find().sort("-createdAt");
+  if (user.role == "user") {
+    orders = await Order.find({ email: user.email }).sort("-createdAt");
+  } else {
+    orders = await Order.find().sort("-createdAt");
   }
 
-
-  
   // console.log(members)
   return res.json(orders);
 };

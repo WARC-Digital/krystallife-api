@@ -1,8 +1,7 @@
-const Order = require("../models/order");
 const User = require("../models/user");
 const Coupon = require("../models/coupon");
 const CouponUsage = require("../models/couponUsage");
-
+const { StatusCodes } = require("http-status-codes");
 
 const create = async (req, res) => {
   let data = req.body;
@@ -39,64 +38,65 @@ const destroy = async (req, res) => {
 };
 
 const getaAll = async (req, res) => {
+  const coupons = await Coupon.find().sort("-active name -createdAt");
 
-const coupons = await Coupon.find().sort("-createdAt active");;
-  
-  return res.json({data:coupons});
+  return res.json({ data: coupons });
 };
 
+const calculateDiscount = async (req, res) => {
+  let data = req.body;
+  console.log(data);
 
-const calculateDiscount = async(req, res)=>{
-    let data = req.body;
-    console.log(data);
-   
+  let result = await calculateDiscountByCoupon(
+    data["email"],
+    data["couponCode"],
+    data["amount"]
+  );
+  return res.status(200).json(result);
+};
 
-    let result = await this.calculateDiscountByCoupon(req,data['couponCode'], data['amount']);
-    return res.status(200).json(result);
-}
-
-const calculateDiscountByCoupon = async(req, code, amount)=>{
-    let userId = req.user.userID;
-    const user =  await User.findById(userId);
-    const coupon = await Coupon.findOne({name:code, active:true});
-    if(!coupon){
-        return {error:true, msg:`Invalid Coupon`};
-    }
-    const usage = CouponUsage.findOne({email:user.email, couponCode:code})
-    if(user.role == 'user'){
-        if(usage && usage.usage >= coupon.useLimit){
-            return {error:true, msg:"Usage Limit Exceeded"}
-        }
-
-        if (amount< coupon.minOrder){
-            return {error:true, msg:`Minimum Order Amount Not Met. Please order ateast of BDT ${coupon.minOrder}`}
-        }
-        if(new Date()> coupon.validity){
-            return {error:true, msg:`Coupon Validity Expired`};
-        }
+const calculateDiscountByCoupon = async (email, code, amount) => {
+  const user = await User.findOne({ email: email });
+  const coupon = await Coupon.findOne({ name: code, active: true });
+  if (!coupon || !coupon.active) {
+    return { error: true, msg: `Invalid Coupon` };
+  }
+  const usage = await CouponUsage.findOne({
+    email: user.email,
+    couponCode: code,
+  });
+  if (user.role == "user") {
+    if (usage && usage.usage >= coupon.useLimit) {
+      return { error: true, msg: "Usage Limit Exceeded" };
     }
 
-    if(usage){
-        await CouponUsage.findByIdAndUpdate(usage._id,{usage:usage.usage+1});
-    }else{
-        await CouponUsage.create({usage:1,email:user.email,couponCode:code});
+    if (amount < coupon.minOrder) {
+      return {
+        error: true,
+        msg: `Minimum Order Requirement Not Met. Please order ateast of BDT ${coupon.minOrder}`,
+      };
     }
-
-    discount = 0;
-
-    if(coupon.percentage != 0){
-        discount = amount *(coupon.percentage/100.0);
-    }else if(coupon.amount != 0){
-        discount = amount;
+    if (new Date() > coupon.validity) {
+      return { error: true, msg: `Coupon Validity Expired` };
     }
+  }
 
-    if(discount> coupon.maxDiscount){
-        discount = coupon.maxDiscount;
-    }
+  //console.log(usage);
 
-    return {error:false, discount:discount};
+  discount = 0;
 
-}
+  if (coupon.percentage != 0) {
+    discount = amount * (coupon.percentage / 100.0);
+  } else if (coupon.amount != 0) {
+    discount = amount;
+  }
+
+  if (discount > coupon.maxDiscount) {
+    discount = coupon.maxDiscount;
+  }
+
+  return { error: false, discount: discount };
+};
 
 const genDateString = () => {
   const date = new Date();

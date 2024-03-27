@@ -11,7 +11,6 @@ const xss = require("xss-clean");
 const rateLimiter = require("express-rate-limit");
 const logger = require("morgan");
 
-
 const nodemailerTemplate = require("./utils/templateMailer");
 
 //Connect DB
@@ -25,6 +24,8 @@ const authRouter = require("./routes/AuthRoute");
 const productRouter = require("./routes/ProductRoute");
 const orderRouter = require("./routes/OrderRoute");
 const userRouter = require("./routes/UserRoute");
+const couponRouter = require("./routes/CouponRoute");
+
 var path = require("path");
 
 // error handler
@@ -70,9 +71,10 @@ app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/product", productRouter);
 app.use("/api/v1/order", orderRouter);
 app.use("/api/v1/user", userRouter);
+app.use("/api/v1/coupon", couponRouter);
 
 app.use(notFoundMiddleware);
-app.use(errorHandlerMiddleware);
+//app.use(errorHandlerMiddleware);
 
 const port = process.env.PORT || 8080;
 
@@ -84,7 +86,5 @@ const start = async () => {
     console.log(error);
   }
 };
-
-
 
 start();
